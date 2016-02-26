@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script >
+    var Task = (function iife() {
+        'use strict';
+
+        function Task(name, workingHours) {
+            var _name,
+                    _workingHours;
+
+            validator.validateNonEmptyString(_name, 'Task name');
+            _name = name;
+            this.setWorkingHours(workingHours);
+
+            this.getName = function get() {
+                return _name;
+            };
+
+            this.getWorkingHours = function set(){
+                return _workingHours;
+            };
+            this.setWorkingHours = function(value){
+                validator.validateIfNumber(value, ' Task working hours');
+                _workingHours = value;
+            };
+
+        }
+
+        Task.prototype.displayInfo = function() {
+            alert("hello, I have " + this.wheels + " wheels and max speed of " + this.maxSpeed);
+        };
+
+        return Task();
+    }());
+
+    var car = new Car();
+    car.displayInfo(); // displays: Hello, I have 4 wheels and max speed of 200
+    var vehicleInstance = new Vehicle();
+    vehicleInstance.displayInfo();
+</script>
+</body>
+</html>
